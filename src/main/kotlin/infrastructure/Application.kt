@@ -41,6 +41,10 @@ fun Application.module() {
     install(StatusPages) {
         data class ErrorResponse(val message: String?)
 
+        status(HttpStatusCode.Unauthorized) {
+            call.respond(HttpStatusCode.Unauthorized, ErrorResponse(HttpStatusCode.Unauthorized.description))
+        }
+
         exception<NotFoundException> {
             call.respond(HttpStatusCode.NotFound, ErrorResponse(it.message))
         }
