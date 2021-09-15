@@ -34,7 +34,7 @@ fun Routing.root(config: ApplicationConfig) {
                     AuthResponse(
                         JWT.create()
                             .withAudience(config.property("jwt.audience").getString())
-                            .withExpiresAt(Date.from(LocalDateTime.now().plusHours(1).toInstant(ZoneOffset.UTC)))
+                            .withExpiresAt(Date(System.currentTimeMillis() + 600000))
                             .withClaim("email", user.email)
                             .withIssuer(config.property("jwt.issuer").getString())
                             .sign(Algorithm.HMAC256(config.property("jwt.secret").getString()))
