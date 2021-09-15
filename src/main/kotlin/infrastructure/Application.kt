@@ -89,7 +89,8 @@ fun Application.module() {
                 .withIssuer(issuer)
                 .build())
             validate { credential ->
-                if(credential.payload.getClaim("email").asString() != "") {
+                if(credential.payload.audience.contains(audience)
+                    && credential.payload.getClaim("email").asString() != "") {
                     JWTPrincipal(credential.payload)
                 } else {
                     null
