@@ -6,6 +6,8 @@ buildscript {
     ext.ktor_version = '1.6.2'
     ext.koin_version= "3.1.2"
     ext.exposed_version = "0.31.1"
+    ext.spring_security_version  = "5.3.11.RELEASE"
+
 
     repositories {
         mavenCentral()
@@ -39,6 +41,8 @@ dependencies {
     implementation "io.ktor:ktor-server-netty:$ktor_version"
     implementation "io.ktor:ktor-locations:$ktor_version"
     implementation "io.ktor:ktor-jackson:$ktor_version"
+    implementation "io.ktor:ktor-auth:$ktor_version"
+    implementation "io.ktor:ktor-auth-jwt:$ktor_version"
     implementation "io.insert-koin:koin-core:$koin_version"
     implementation "io.insert-koin:koin-ktor:$koin_version"
     implementation "io.insert-koin:koin-logger-slf4j:$koin_version"
@@ -48,6 +52,7 @@ dependencies {
     implementation "org.jetbrains.exposed:exposed-dao:$exposed_version"
     implementation "org.jetbrains.exposed:exposed-jdbc:$exposed_version"
     implementation "javax.validation:validation-api:2.0.1.Final"
+    implementation "org.springframework.security:spring-security-web:$spring_security_version"
     runtimeOnly 'org.hibernate.validator:hibernate-validator:6.0.17.Final'
     runtimeOnly 'org.glassfish:javax.el:3.0.1-b11'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
